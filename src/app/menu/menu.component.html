@@ -1,0 +1,12 @@
+<nav>
+    <div class="nav-wrapper">
+      <a [routerLink]="['']" class="brand-logo right">
+          <img src="assets/images/logo_angular.png" alt="" width="100px">
+        </a>
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+        <li routerLinkActive="active"><a [routerLink]="['/login']">login</a></li>
+        <li routerLinkActive="active"><a [routerLink]="['/cursos']">Cursos</a></li>
+        <li routerLinkActive="active"><a [routerLink]="['/detalhes-curso',idcurso]">Detalhes cursos</a></li>
+      </ul>
+    </div>
+  </nav>
