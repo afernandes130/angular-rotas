@@ -1,4 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, OnDestroy } from '@angular/core';
+
+import { BroadcastEventService } from './../shared/broadcast-event.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'menu',
@@ -7,11 +10,21 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  @Input() idcurso: string;
+  event : Subscription;
+  idcurso: string;
 
-  constructor() { }
+  constructor() { 
+    this.event = BroadcastEventService.get("idcurso").subscribe((param: string) => this.idcurso = param );
+  }
 
   ngOnInit(): void {
+    console.log("okkk")
+    console.log(this.idcurso)
+
+  }
+
+  OnDestro():void {
+    this.event.unsubscribe();
   }
 
 }

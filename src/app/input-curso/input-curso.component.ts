@@ -1,5 +1,8 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
+import { BroadcastEventService } from '../shared/broadcast-event.service';
+
+
 @Component({
   selector: 'input-curso',
   templateUrl: './input-curso.component.html',
@@ -7,7 +10,6 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 })
 export class InputCursoComponent implements OnInit {
 
-  @Input() id: string;
   @Output() mudouid = new EventEmitter;
 
   constructor() { }
@@ -17,9 +19,8 @@ export class InputCursoComponent implements OnInit {
   }
 
   keyuppress(event){
-    this.id = (<HTMLInputElement>event.target).value
-    this.mudouid.emit(this.id)
-    console.log(this.id);
+    BroadcastEventService.get("idcurso").emit((<HTMLInputElement>event.target).value)
+    console.log((<HTMLInputElement>event.target).value)
   }
 
   ngOnInit(): void {

@@ -1,6 +1,7 @@
+import { CursosServicesService } from '../cursos-services.service';
 import { Subscription } from 'rxjs';
 import { Component, OnInit,OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'detalhes-curso',
@@ -11,8 +12,9 @@ export class DetalhesCursoComponent implements OnInit {
 
   idcurso: string = "";
   subscription: Subscription;
+  curso: any;
 
-  constructor(private _route: ActivatedRoute ) { }
+  constructor(private _route: ActivatedRoute, private _cursos : CursosServicesService, private _router : Router ) { }
 
   ngOnInit(): void {
     this.subscription = this._route.params.subscribe(
@@ -20,6 +22,13 @@ export class DetalhesCursoComponent implements OnInit {
        this.idcurso = params['idcurso']
       }
     )
+    console.log('passou')
+    this.curso = this._cursos.GetId(this.idcurso)
+    
+    if (this.curso == null){
+      this._router.navigate(['curso-n-localizado'])
+    }
+
   }
 
   ngOnDestroy(): void {
