@@ -26,7 +26,7 @@ export class DetalhesCursoComponent implements OnInit {
     this.curso = this._cursos.GetId(this.idcurso)
     
     if (this.curso == null){
-      this._router.navigate(['curso-n-localizado'])
+      this._router.navigate(['cursos/curso-n-localizado'])
     }
 
   }

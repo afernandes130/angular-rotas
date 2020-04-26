@@ -1,4 +1,7 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+
+import { AlunosService } from './alunos.service';
 
 @Component({
   selector: 'app-alunos',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlunosComponent implements OnInit {
 
-  constructor() { }
+  alunos: any
+
+  newaluno(){
+    this._router.navigate(['/alunos/new'])
+  }
+
+  constructor(private _alunos : AlunosService, private _router : Router ) {}
 
   ngOnInit(): void {
+    this.alunos = this._alunos.Get()
+
   }
 
 }
