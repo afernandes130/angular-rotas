@@ -12,16 +12,13 @@ export class MenuComponent implements OnInit {
 
   event : Subscription;
   idcurso: string;
+  @Input() isvisible : boolean;
 
   constructor() { 
     this.event = BroadcastEventService.get("idcurso").subscribe((param: string) => this.idcurso = param );
   }
 
-  ngOnInit(): void {
-    console.log("okkk")
-    console.log(this.idcurso)
-
-  }
+  ngOnInit(): void { }
 
   OnDestro():void {
     this.event.unsubscribe();

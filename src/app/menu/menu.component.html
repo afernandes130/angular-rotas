@@ -1,5 +1,5 @@
-<nav>
-    <div class="nav-wrapper">
+<nav *ngIf='isvisible'>
+    <div class="nav-wrapper" >
       <a [routerLink]="['']" class="brand-logo right">
           <img src="assets/images/logo_angular.png" alt="" width="100px">
         </a>
@@ -11,5 +11,4 @@
       </ul>
     </div>
   </nav>
-
 
