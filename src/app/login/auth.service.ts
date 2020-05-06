@@ -10,6 +10,7 @@ import { BroadcastEventService } from './../shared/broadcast-event.service';
 export class AuthService {
 
   public isautenticated : boolean = false;
+  public alloweditaluno : boolean = false;
 
   Login(usuario: Usuario){
     if (usuario.login == 'adriano' && usuario.senha == '123456') {
